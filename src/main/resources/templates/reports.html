@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>报表</title>
+</head>
+<body>
+<h3> 你好！ <b th:text="${nickname}"></b></h3>
+<!--<p></p>-->
+<h3><i th:text="${date}"></i>的报表：</h3>
+<h4><a th:href="@{~/me/reportHtml(name=heat,date=${date})}" href="/me/reportHtml?name=heat">热力图</a></h4>
+
+
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportSVG(name=whereistime,date=${date})}" href="/me/reportSVG?name=heat">时间去哪儿了</a></h4>
+    <div th:utext="${whereistime}"></div>
+    <!--    <embed th:src="@{~/me/reportSVG(name=whereistime,date=${date})}" src="/me/reportSVGImage?type=daily" alt="whereistime"-->
+    <!--           type="image/svg+xml">-->
+</div>
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportSVG(name=howlongiplay,date=${date})}" href="/me/reportSVG?name=heat">玩手机</a></h4>
+    <div th:utext="${howlongiplay}"></div>
+    <!--    <embed th:src="@{~/me/reportSVG(name=howlongiplay,date=${date})}" src="/me/reportSVGImage?type=daily" alt="whereistime"-->
+    <!--           type="image/svg+xml">-->
+</div>
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportSVG(name=which_building_i_like_best,date=${date})}"
+           href="/me/reportSVG?name=which_building_i_like_best">最爱去哪</a></h4>
+    <div th:utext="${which_building_i_like_best}"></div>
+    <!--    <embed th:src="@{~/me/reportSVG(name=which_building_i_like_best,date=${date})}" src="/me/reportSVGImage?type=daily" alt="whereistime"-->
+    <!--           type="image/svg+xml">-->
+</div>
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportSVG(name=where_my_phone_die,date=${date})}"
+           href="/me/reportSVG?name=where_my_phone_die">耗电图</a></h4>
+    <div th:utext="${where_my_phone_die}"></div>
+    <!--    <embed th:src="@{~/me/reportSVG(name=where_my_phone_die,date=${date})}" src="/me/reportSVGImage?type=daily" alt="whereistime"-->
+    <!--            type="image/svg+xml">-->
+</div>
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportPNG(name=yourjourney,date=${date})}" href="/me/reportPNG?name=yourjourney">日志</a></h4>
+<!--    <img th:src="data:image/png;base64,${yourjourney}" alt="daily report"/>-->
+    <img th:src="@{~/me/reportPNG(name=yourjourney,date=${date})}" src="/me/reportPNG?name=yourcalender"
+         alt="daily report">
+</div>
+<div style="width:50%; height:auto; float:left; display:inline">
+    <h4><a th:href="@{~/me/reportPNG(name=yourcalender,date=${date})}" href="/me/reportPNG?name=yourcalender">日历</a>
+    </h4>
+    <img th:src="@{~/me/reportPNG(name=yourcalender,date=${date})}" src="/me/reportPNG?name=yourcalender"
+         alt="daily report">
+
+<!--    <img th:src="data:image/png;base64,${yourcalender}"  alt="daily report"/>-->
+</div>
+
+<!--<img th:src="@{~/me/reportImage(type=daily,date=${date})}" src="/me/reportImage?type=daily" alt="daily report">-->
+
+<h3>其它日期的报表</h3>
+<div th:each="d : ${prevWeek}">
+    <a th:href="@{~/me/reports(date=${d})}" th:text="${d}">
+        time
+    </a>
+</div>
+
+<div style="padding: 15px">
+    <a href="/me"><h3>返回</h3></a>
+</div>
+</body>
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    a:visited, a:link {
+        color: royalblue;
+    }
+
+    table {
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+        border-style: solid;
+    }
+
+    embed {
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+</style>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册新用户</title>
+</head>
+<body>
+<h2>欢迎注册PTS</h2>
+<form style="padding: 20px;width: 80%;border-style: solid"
+        action="#" th:action="@{/registry}" th:object="${userRegistryForm}" method="post">
+    <table style="width: 100%;margin: auto">
+        <tr>
+            <td style="width: 20%">用户名</td>
+            <td style="width: 60%"><input type="text" th:field="*{username}"></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">用户名错误</td>
+        </tr>
+        <tr>
+            <td style="width: 20%">密码</td>
+            <td style="width: 60%"><input type="password" th:field="*{password}"></td>
+        </tr>
+        <tr>
+            <td style="width: 20%">确认密码</td>
+            <td style="width: 60%">
+                <input type="password" th:field="*{password2}">
+            </td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">密码错误</td>
+        </tr>
+
+
+    </table>
+    <div style="margin-left: 20%">
+        <button type="submit">提交</button>
+    </div>
+
+</form>
+</body>
+<style>
+
+    input {
+        width: 80%;
+        height: 20px;
+        font-size: 18px;
+    }
+    button{
+        width: 25%;
+        margin: auto;
+    }
+
+    form{
+        width: 80%;
+    }
+
+
+</style>
+</html>

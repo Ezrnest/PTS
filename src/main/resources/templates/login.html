@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<h2 align="center">登录</h2>
+
+
+<form th:action="@{/login}" method="post">
+    <table width="100%">
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+
+    </table>
+    <p align="center" th:if="${error}">
+        用户名或者密码不正确
+    </p>
+    <button type="submit">登录</button>
+</form>
+
+<div th:if="${param.logout}" >
+    <h3 align="center">
+        你已经登出系统
+    </h3>
+</div>
+
+<div align="center" style="margin-top: 50px">
+    <a href="/">返回首页</a>
+</div>
+</body>
+<style>
+    form {
+        width: 50%;
+        border-style: solid;
+        margin: auto;
+        padding: 10px;
+    }
+
+    input {
+        width: 80%;
+        height: 20px;
+        font-size: 18px;
+    }
+    button{
+        width: 30%;
+        margin-left: 35%;
+    }
+
+
+</style>
+
+
+</html>
